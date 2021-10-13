@@ -142,7 +142,7 @@ insert into partida
 values (10, 2, '30/10/2021', 2, 2, 'Rio de Janeiro - RJ');
 
 insert into jogador
-values (274904287, 'Marcos Tavares', '30/03/1984', 'Brasileira', 1);
+values (274904287, 'Marcos Tavares', '30/03/1980', 'Brasileira', 1);
 insert into jogador
 values (140654707, 'Léo Matos', '02/04/1986', 'Brasileira', 2);
 insert into jogador
@@ -152,7 +152,7 @@ values (189774976, 'Matheus Cunha', '27/05/1999', 'Brasileira', 4);
 insert into jogador
 values (367911413, 'Adryan', '10/08/1994', 'Brasileira', 5);
 insert into jogador
-values (131894341, 'Miranda', '07/07/1984', 'Brasileira', 6);
+values (131894341, 'Miranda', '07/07/1980', 'Brasileira', 6);
 insert into jogador
 values (266058577, 'Luiz Araujo', '02/06/1996', 'Brasileira', 7);
 insert into jogador
