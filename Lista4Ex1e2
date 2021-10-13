@@ -1,81 +1,69 @@
 create domain idtype as numeric(4);
+
 create domain rgtype as numeric(9);
 
-create table equipe
-(
-    IdEquipe  idtype,
-    Nome      varchar(30) NOT NULL,
-    Estado    varchar(2),
-    Tipo      varchar(20),
+create table equipe (
+    IdEquipe idtype,
+    Nome varchar(30) NOT NULL,
+    Estado varchar(2),
+    Tipo varchar(20),
     SaldoGols numeric(2),
-
     constraint equipe_fk primary key (IdEquipe),
     constraint equipe_un unique (Nome)
 );
 
-create table joga
-(
+create table joga (
     IdEquipe1 idtype,
     IdEquipe2 idtype,
-    Classico  boolean,
-
+    Classico boolean,
     constraint joga_pk primary key (IdEquipe1, IdEquipe2),
-    constraint joga_fk1 foreign key (IdEquipe1) references equipe (IdEquipe),
-    constraint joga_fk2 foreign key (IdEquipe2) references equipe (IdEquipe)
+    constraint joga_fk1 foreign key (IdEquipe1) references equipe (IdEquipe) on delete cascade,
+    constraint joga_fk2 foreign key (IdEquipe2) references equipe (IdEquipe) on delete cascade
 );
 
-create table partida
-(
-    IdEquipe1   idtype,
-    IdEquipe2   idtype,
-    Data        date,
+create table partida (
+    IdEquipe1 idtype,
+    IdEquipe2 idtype,
+    Data date,
     GolsEquipe1 integer,
     GolsEquipe2 integer,
-    Local       varchar(50),
-
+    Local varchar(50),
     constraint partida_pk primary key (IdEquipe1, IdEquipe2, Data),
-    constraint partida_fk foreign key (IdEquipe1, IdEquipe2) references joga (IdEquipe1, IdEquipe2)
+    constraint partida_fk foreign key (IdEquipe1, IdEquipe2) references joga (IdEquipe1, IdEquipe2) on delete cascade
 );
 
-create table jogador
-(
-    RG             rgtype,
-    Nome           varchar(30) NOT NULL,
+create table jogador (
+    RG rgtype,
+    Nome varchar(30) NOT NULL,
     DataNascimento date,
-    Naturalidade   varchar(50),
-    IdEquipe       idtype,
-
+    Naturalidade varchar(50),
+    IdEquipe idtype,
     constraint jogador_pk primary key (RG),
     constraint jogador_un unique (Nome),
-    constraint jogador_fk foreign key (IdEquipe) references equipe (IdEquipe)
+    constraint jogador_fk foreign key (IdEquipe) references equipe (IdEquipe) on delete
+    set null
 );
 
-create table posicao_jogador
-(
+create table posicao_jogador (
     Jogador rgtype,
     Posicao varchar(30),
-
     constraint posicao_jogador_pk primary key (Jogador, Posicao)
 );
 
-create table diretor
-(
-    Equipe    idtype,
-    Nome      varchar(30),
+create table diretor (
+    Equipe idtype,
+    Nome varchar(30),
     Sobrenome varchar(30),
-
     constraint diretor_pk primary key (Equipe, Nome, Sobrenome),
-    constraint diretor_fk foreign key (Equipe) references equipe (IdEquipe)
+    constraint diretor_fk foreign key (Equipe) references equipe (IdEquipe) on delete cascade
 );
 
-create table uniforme
-(
-    Equipe       idtype,
-    Tipo         varchar(20),
+create table uniforme (
+    Equipe idtype,
+    Tipo varchar(20),
     CorPrincipal varchar(20),
-
     constraint uniforme_pk primary key (Equipe, Tipo),
-    constraint uniforme_fk foreign key (Equipe) references equipe (IdEquipe)
+    constraint uniforme_fk foreign key (Equipe) references equipe (IdEquipe) on delete cascade
 );
 
 insert into equipe
@@ -142,25 +130,85 @@ insert into partida
 values (10, 2, '30/10/2021', 2, 2, 'Rio de Janeiro - RJ');
 
 insert into jogador
-values (274904287, 'Marcos Tavares', '30/03/1980', 'Brasileira', 1);
+values (
+        274904287,
+        'Marcos Tavares',
+        '30/03/1980',
+        'Brasileira',
+        1
+    );
 insert into jogador
-values (140654707, 'Léo Matos', '02/04/1986', 'Brasileira', 2);
+values (
+        140654707,
+        'Léo Matos',
+        '02/04/1986',
+        'Brasileira',
+        2
+    );
 insert into jogador
-values (475933497, 'Wendell', '20/07/1993', 'Brasileira', 3);
+values (
+        475933497,
+        'Wendell',
+        '20/07/1993',
+        'Brasileira',
+        3
+    );
 insert into jogador
-values (189774976, 'Matheus Cunha', '27/05/1999', 'Brasileira', 4);
+values (
+        189774976,
+        'Matheus Cunha',
+        '27/05/1999',
+        'Brasileira',
+        4
+    );
 insert into jogador
-values (367911413, 'Adryan', '10/08/1994', 'Brasileira', 5);
+values (
+        367911413,
+        'Adryan',
+        '10/08/1994',
+        'Brasileira',
+        5
+    );
 insert into jogador
-values (131894341, 'Miranda', '07/07/1980', 'Brasileira', 6);
+values (
+        131894341,
+        'Miranda',
+        '07/07/1980',
+        'Brasileira',
+        6
+    );
 insert into jogador
-values (266058577, 'Luiz Araujo', '02/06/1996', 'Brasileira', 7);
+values (
+        266058577,
+        'Luiz Araujo',
+        '02/06/1996',
+        'Brasileira',
+        7
+    );
 insert into jogador
-values (190891294, 'Malcom', '26/02/1997', 'Brasileira', 7);
+values (
+        190891294,
+        'Malcom',
+        '26/02/1997',
+        'Brasileira',
+        7
+    );
 insert into jogador
-values (306613037, 'Douglas Costa', '14/09/1990', 'Brasileira', 10);
+values (
+        306613037,
+        'Douglas Costa',
+        '14/09/1990',
+        'Brasileira',
+        10
+    );
 insert into jogador
-values (364514802, 'Joelinton', '14/08/1996', 'Brasileira', 10);
+values (
+        364514802,
+        'Joelinton',
+        '14/08/1996',
+        'Brasileira',
+        10
+    );
 
 insert into posicao_jogador
 values (274904287, 'Goleiro');
