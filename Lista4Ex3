@@ -16,6 +16,7 @@ from jogador j
 where (select date_part('year', age(current_date, j.datanascimento)) > 30);
 
 --Q10
+-- Suponha que a Equipe que queremos os dados da partida seja a equipe de id 10, então temos:
 select *
 from partida
 where partida.idequipe1 = 10
