@@ -63,7 +63,7 @@ create table uniforme (
     Tipo varchar(20),
     CorPrincipal varchar(20),
     constraint uniforme_pk primary key (Equipe, Tipo),
-    constraint uniforme_fk foreign key (Equipe) references equipe (IdEquipe) on delete cascade
+    constraint uniforme_fk foreign key (Equipe) references equipe (IdEquipe) on delete cascade 
 );
 
 insert into equipe
