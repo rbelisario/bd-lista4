@@ -1,5 +1,4 @@
 -- Exercicio 4a
-
 -- quando não é explicitado um valor default, é usado como padrão null
 -- não faz sentido utilizar default quando o atributo faz parte da chave, pois ela deve ser unica
 insert into equipe
@@ -33,6 +32,7 @@ insert into uniforme
 values (11, 'Titular', default);
 
 -- Exercicio 4b
+delete from equipe where idequipe = 1;
 /*
  tabela equipe: linha da equipe removida 
  tabela JOGADOR: idequipe do jogador cuja equipe foi removida modificada pra null,

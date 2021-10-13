@@ -12,7 +12,7 @@ where uniforme.tipo = 'Titular'
    and uniforme.equipe = equipe.idequipe
    and equipe.tipo = 'Profissional'
    and equipe.estado = 'MG';
-   
+
 --Q3
 select jogador.nome,
    naturalidade,
