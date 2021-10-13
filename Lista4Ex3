@@ -1,23 +1,42 @@
-
 --Q1
 select *
 from equipe
-         left join jogador on equipe.idequipe = jogador.idequipe
+   left join jogador on equipe.idequipe = jogador.idequipe
 order by equipe.idequipe;
 
 --Q8
-select j.rg, j.nome, j.naturalidade
+select j.rg,
+   j.nome,
+   j.naturalidade
 from jogador j
-where (select extract(year from j.datanascimento) = '1980');
+where (
+      select extract(
+            year
+            from j.datanascimento
+         ) = '1980'
+   );
 
 --Q9
-select j.rg, j.nome, j.naturalidade, j.datanascimento
+select j.rg,
+   j.nome,
+   j.naturalidade,
+   j.datanascimento
 from jogador j
-where (select date_part('year', age(current_date, j.datanascimento)) > 30);
+where (
+      select date_part('year', age(current_date, j.datanascimento)) > 30
+   );
 
 --Q10
--- Suponha que a Equipe que queremos os dados da partida seja a equipe de id 10, então temos:
+-- Suponha que a Equipe que queremos os dados da partida seja a equipe de nome Fluminense, então temos:
 select *
-from partida
-where partida.idequipe1 = 10
-   OR partida.idequipe2 = 10;
+from partida p
+where idequipe1 in (
+      select idequipe
+      from equipe
+      where nome in ('Fluminense')
+   )
+   or idequipe2 in (
+      select idequipe
+      from equipe
+      where nome in ('Fluminense')
+   );
