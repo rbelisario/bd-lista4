@@ -30,13 +30,8 @@ where (
 -- Suponha que a Equipe que queremos os dados da partida seja a equipe de nome Fluminense, então temos:
 select *
 from partida p
-where idequipe1 in (
+where (
       select idequipe
       from equipe
       where nome in ('Fluminense')
-   )
-   or idequipe2 in (
-      select idequipe
-      from equipe
-      where nome in ('Fluminense')
-   );
+   ) in (idequipe1, idequipe2);
