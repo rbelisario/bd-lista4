@@ -4,6 +4,40 @@ from equipe
    left join jogador on equipe.idequipe = jogador.idequipe
 order by equipe.idequipe;
 
+
+--Q4
+ 
+SELECT 
+avg(saldo_gols), Estado
+FROM equipe
+GROUP BY Estado;
+
+--Q5
+ 
+SELECT 
+avg(saldo_gols), Estado, Tipo
+FROM equipe
+GROUP BY Estado,Tipo;
+
+--Q6
+ 
+SELECT 
+avg(saldo_gols), Estado, Tipo
+FROM equipe
+Where Tipo = "Profissional" AND avg(saldo_gols)  BETWEEN 3 AND 10;
+GROUP BY Estado;
+
+--Q6
+ 
+SELECT 
+avg(saldo_gols), Estado, Tipo
+FROM equipe
+Where Tipo = "Profissional" AND saldo_gols > 0;
+GROUP BY Estado;
+
+-- difere na clausula de where onde ao invés de consultamos estados com média dentro de um intervalo consultamos apenas os times com saldo maior que zero de gols
+
+
 --Q8
 select j.rg,
    j.nome,
