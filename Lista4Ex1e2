@@ -165,7 +165,7 @@ values (364514802, 'Joelinton', '14/08/1996', 'Brasileira', 10);
 insert into posicao_jogador
 values (274904287, 'Goleiro');
 insert into posicao_jogador
-values (140654707, 'Lateral Direto');
+values (140654707, 'Lateral Direito');
 insert into posicao_jogador
 values (475933497, 'Lateral Esquerdo');
 insert into posicao_jogador
