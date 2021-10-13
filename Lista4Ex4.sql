@@ -42,7 +42,7 @@ delete from equipe where idequipe = 1;
  tabela PARTIDA: partidas que a equipe removida tenha participado tambpem são removidas
  */
 
-
+-- Exercicio 4c
 ALTER TABLE "UNIFORME" DROP CONSTRAINT "uniforme_fk";
 ALTER TABLE "UNIFORME" ADD CONSTRAINT "uniforme_fk" FOREIGN KEY ("IdEquipe")
 REFERENCES Equipe ("IdEquipe") ON DELETE CASCADE ON UPDATE CASCADE;
