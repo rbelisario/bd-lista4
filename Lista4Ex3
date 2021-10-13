@@ -1,0 +1,22 @@
+
+--Q1
+select *
+from equipe
+         left join jogador on equipe.idequipe = jogador.idequipe
+order by equipe.idequipe;
+
+--Q8
+select j.rg, j.nome, j.naturalidade
+from jogador j
+where (select extract(year from j.datanascimento) = '1980');
+
+--Q9
+select j.rg, j.nome, j.naturalidade, j.datanascimento
+from jogador j
+where (select date_part('year', age(current_date, j.datanascimento)) > 30);
+
+--Q10
+select *
+from partida
+where partida.idequipe1 = 10
+   OR partida.idequipe2 = 10;
